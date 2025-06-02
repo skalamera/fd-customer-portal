@@ -799,6 +799,11 @@ h3 {
     margin: 20px 0 30px 0;
 }
 
+/* Status Monitor Section - Single Line Style */
+.status-monitor-section {
+    margin: 20px 0 30px 0;
+}
+
 .status-monitor-line {
     display: flex;
     align-items: center;
