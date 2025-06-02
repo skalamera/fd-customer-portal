@@ -278,10 +278,15 @@
             openAndPrefillForm();
         });
 
-        // Add a manual trigger for opening the General Inquiry form
-        document.getElementById('open-widget-button').addEventListener('click', function () {
-            openGeneralInquiryForm();
-        });
+        // Add a manual trigger for opening the General Inquiry form with null check
+        const openWidgetButton = document.getElementById('open-widget-button');
+        if (openWidgetButton) {
+            openWidgetButton.addEventListener('click', function () {
+                openGeneralInquiryForm();
+            });
+        } else {
+            console.log('🔍 [Debug] Open widget button not found - skipping event listener');
+        }
 
     </script>
 

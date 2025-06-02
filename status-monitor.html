@@ -1,261 +1,260 @@
+<script>
+    // BU Status Monitor - Simplified Version
+    class BUStatusMonitor {
+        constructor() {
+            this.subdomain = 'benchmarkeducation';
+            this.updateInterval = 3 * 60 * 1000; // 3 minutes
+            this.statusCircle = document.getElementById('statusCircle');
+            this.statusDetail = document.getElementById('statusDetail');
+            this.statusUpdated = document.getElementById('statusUpdated');
 
-    <script>
-        // BU Status Monitor - Simplified Version
-        class BUStatusMonitor {
-            constructor() {
-                this.subdomain = 'benchmarkeducation';
-                this.updateInterval = 3 * 60 * 1000; // 3 minutes
-                this.statusCircle = document.getElementById('statusCircle');
-                this.statusDetail = document.getElementById('statusDetail');
-                this.statusUpdated = document.getElementById('statusUpdated');
+            console.log('🔄 BU Status Monitor initialized');
+            console.log(`📡 Will check status every ${this.updateInterval / 1000 / 60} minutes`);
+            this.init();
+        }
 
-                console.log('🔄 BU Status Monitor initialized');
-                console.log(`📡 Will check status every ${this.updateInterval / 1000 / 60} minutes`);
-                this.init();
-            }
+        init() {
+            console.log('🚀 Starting initial status check');
+            this.checkStatus();
 
-            init() {
-                console.log('🚀 Starting initial status check');
+            console.log('⏰ Setting up periodic status checks');
+            setInterval(() => {
+                console.log('🔔 Periodic status check triggered');
                 this.checkStatus();
+            }, this.updateInterval);
+        }
 
-                console.log('⏰ Setting up periodic status checks');
-                setInterval(() => {
-                    console.log('🔔 Periodic status check triggered');
-                    this.checkStatus();
-                }, this.updateInterval);
-            }
+        async checkStatus() {
+            const startTime = Date.now();
+            console.log('📊 [Status Check] Starting status check at', new Date().toLocaleTimeString());
 
-            async checkStatus() {
-                const startTime = Date.now();
-                console.log('📊 [Status Check] Starting status check at', new Date().toLocaleTimeString());
+            try {
+                console.log('🌐 [Connectivity] Testing connectivity to status page...');
 
-                try {
-                    console.log('🌐 [Connectivity] Testing connectivity to status page...');
+                // Test connectivity to the status page
+                const isAccessible = await this.testConnectivity();
 
-                    // Test connectivity to the status page
-                    const isAccessible = await this.testConnectivity();
+                const duration = Date.now() - startTime;
+                console.log(`⏱️ [Connectivity] Test completed in ${duration}ms, result: ${isAccessible ? 'SUCCESS' : 'FAILED'}`);
 
-                    const duration = Date.now() - startTime;
-                    console.log(`⏱️ [Connectivity] Test completed in ${duration}ms, result: ${isAccessible ? 'SUCCESS' : 'FAILED'}`);
-
-                    if (isAccessible) {
-                        console.log('✅ [Status] Status page accessible - setting to operational');
-                        // If we can reach the status page, assume operational
-                        // In a real scenario, you'd parse the page content
-                        this.setStatus('operational', 'All systems operational');
-                    } else {
-                        console.log('⚠️ [Status] Status page not accessible - setting to degraded');
-                        this.setStatus('degraded', 'Service connectivity issues');
-                    }
-                } catch (error) {
-                    console.warn('❌ [Error] Status check failed:', error);
-                    console.log('🔄 [Fallback] Defaulting to operational status');
-                    // Default to operational if we can't determine status
+                if (isAccessible) {
+                    console.log('✅ [Status] Status page accessible - setting to operational');
+                    // If we can reach the status page, assume operational
+                    // In a real scenario, you'd parse the page content
                     this.setStatus('operational', 'All systems operational');
+                } else {
+                    console.log('⚠️ [Status] Status page not accessible - setting to degraded');
+                    this.setStatus('degraded', 'Service connectivity issues');
                 }
-
-                const totalDuration = Date.now() - startTime;
-                console.log(`✅ [Complete] Status check completed in ${totalDuration}ms`);
+            } catch (error) {
+                console.warn('❌ [Error] Status check failed:', error);
+                console.log('🔄 [Fallback] Defaulting to operational status');
+                // Default to operational if we can't determine status
+                this.setStatus('operational', 'All systems operational');
             }
 
-            async testConnectivity() {
-                console.log('🔍 [Test] Creating connectivity test...');
-
-                return new Promise((resolve) => {
-                    const img = new Image();
-                    const testStartTime = Date.now();
-
-                    const timeout = setTimeout(() => {
-                        console.log('⏰ [Test] Connectivity test timed out after 5 seconds - assuming operational');
-                        resolve(true); // Default to operational on timeout
-                    }, 5000);
-
-                    img.onload = () => {
-                        const loadTime = Date.now() - testStartTime;
-                        console.log(`✅ [Test] Favicon loaded successfully in ${loadTime}ms`);
-                        clearTimeout(timeout);
-                        resolve(true);
-                    };
-
-                    img.onerror = () => {
-                        const errorTime = Date.now() - testStartTime;
-                        console.log(`⚠️ [Test] Favicon failed to load after ${errorTime}ms - assuming operational anyway`);
-                        clearTimeout(timeout);
-                        resolve(true); // Even if favicon fails, assume operational
-                    };
-
-                    const testUrl = `https://${this.subdomain}.freshstatus.io/favicon.ico?t=${Date.now()}`;
-                    console.log(`🌍 [Test] Testing URL: ${testUrl}`);
-
-                    // Try to load a small resource from the status page
-                    img.src = testUrl;
-                });
-            }
-
-            setStatus(severity, text) {
-                console.log(`🎯 [Update] Setting status: ${severity.toUpperCase()} - "${text}"`);
-
-                // Update the status circle
-                this.statusCircle.className = `status-circle ${severity}`;
-
-                // Update the status text
-                this.statusDetail.textContent = text;
-
-                // Update the last updated time
-                const now = new Date();
-                const timeString = now.toLocaleTimeString();
-                this.statusUpdated.textContent = `Updated: ${timeString}`;
-
-                console.log(`📝 [Update] Status UI updated at ${timeString}`);
-                console.log(`🎨 [UI] Circle class: ${this.statusCircle.className}`);
-                console.log(`💬 [UI] Status text: ${text}`);
-            }
-
-            // Manual status update method for when you know there's an incident
-            updateStatus(severity, message) {
-                console.log(`🔧 [Manual] Manual status update requested: ${severity} - ${message}`);
-                this.setStatus(severity, message);
-            }
+            const totalDuration = Date.now() - startTime;
+            console.log(`✅ [Complete] Status check completed in ${totalDuration}ms`);
         }
 
-        // Initialize the status monitor when the page loads
-        let statusMonitor;
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('📄 [Init] DOM loaded, waiting 1 second before initializing status monitor...');
+        async testConnectivity() {
+            console.log('🔍 [Test] Creating connectivity test...');
 
-            // Wait a bit to ensure other scripts are loaded
-            setTimeout(() => {
-                console.log('🏁 [Init] Initializing BU Status Monitor...');
-                statusMonitor = new BUStatusMonitor();
-
-                // Make it globally accessible for manual updates
-                window.buStatusMonitor = statusMonitor;
-                console.log('🌐 [Global] Status monitor available as window.buStatusMonitor');
-
-                // Example of how to manually update if needed:
-                console.log('💡 [Help] Manual update example: window.buStatusMonitor.updateStatus("major-outage", "Database outage in progress")');
-
-            }, 1000);
-        });
-
-        // Helper function for manual status updates from console
-        function setBUStatus(severity, message) {
-            console.log(`🎮 [Helper] setBUStatus called with: ${severity}, ${message}`);
-            if (window.buStatusMonitor) {
-                window.buStatusMonitor.updateStatus(severity, message);
-            } else {
-                console.error('❌ [Helper] Status monitor not yet initialized');
-                console.log('⏳ [Helper] Waiting for status monitor to initialize...');
-
-                // Wait for the status monitor to be ready
-                const checkReady = setInterval(() => {
-                    if (window.buStatusMonitor) {
-                        console.log('✅ [Helper] Status monitor now ready, applying update');
-                        clearInterval(checkReady);
-                        window.buStatusMonitor.updateStatus(severity, message);
-                    }
-                }, 100); // Check every 100ms
-
-                // Give up after 10 seconds
-                setTimeout(() => {
-                    clearInterval(checkReady);
-                    console.error('❌ [Helper] Status monitor failed to initialize within 10 seconds');
-                }, 10000);
-            }
-        }
-
-        // Helper function to check if status monitor is ready
-        function isBUStatusReady() {
-            const isReady = !!(window.buStatusMonitor && typeof window.buStatusMonitor.updateStatus === 'function');
-            console.log(`🔍 [Ready Check] Status monitor ready: ${isReady}`);
-            return isReady;
-        }
-
-        // Helper function to wait for status monitor to be ready
-        function waitForBUStatus() {
             return new Promise((resolve) => {
-                if (window.buStatusMonitor) {
-                    console.log('✅ [Wait] Status monitor already ready');
-                    resolve(window.buStatusMonitor);
-                    return;
-                }
+                const img = new Image();
+                const testStartTime = Date.now();
 
-                console.log('⏳ [Wait] Waiting for status monitor to initialize...');
-                const checkReady = setInterval(() => {
-                    if (window.buStatusMonitor) {
-                        console.log('✅ [Wait] Status monitor is now ready');
-                        clearInterval(checkReady);
-                        resolve(window.buStatusMonitor);
-                    }
-                }, 100);
+                const timeout = setTimeout(() => {
+                    console.log('⏰ [Test] Connectivity test timed out after 5 seconds - assuming operational');
+                    resolve(true); // Default to operational on timeout
+                }, 5000);
 
-                // Timeout after 10 seconds
-                setTimeout(() => {
-                    clearInterval(checkReady);
-                    console.error('❌ [Wait] Timeout waiting for status monitor');
-                    resolve(null);
-                }, 10000);
+                img.onload = () => {
+                    const loadTime = Date.now() - testStartTime;
+                    console.log(`✅ [Test] Favicon loaded successfully in ${loadTime}ms`);
+                    clearTimeout(timeout);
+                    resolve(true);
+                };
+
+                img.onerror = () => {
+                    const errorTime = Date.now() - testStartTime;
+                    console.log(`⚠️ [Test] Favicon failed to load after ${errorTime}ms - assuming operational anyway`);
+                    clearTimeout(timeout);
+                    resolve(true); // Even if favicon fails, assume operational
+                };
+
+                const testUrl = `https://${this.subdomain}.freshstatus.io/favicon.ico?t=${Date.now()}`;
+                console.log(`🌍 [Test] Testing URL: ${testUrl}`);
+
+                // Try to load a small resource from the status page
+                img.src = testUrl;
             });
         }
 
-        // Make helper functions globally accessible
-        window.setBUStatus = setBUStatus;
-        window.isBUStatusReady = isBUStatusReady;
-        window.waitForBUStatus = waitForBUStatus;
+        setStatus(severity, text) {
+            console.log(`🎯 [Update] Setting status: ${severity.toUpperCase()} - "${text}"`);
 
-        console.log('🌐 [Global] Helper functions available:');
-        console.log('  - setBUStatus(severity, message)');
-        console.log('  - isBUStatusReady()');
-        console.log('  - waitForBUStatus().then(monitor => ...)');
+            // Update the status circle
+            this.statusCircle.className = `status-circle ${severity}`;
 
-        // Immediate verification that functions are accessible
-        console.log('🔍 [Debug] Verifying global function assignments:');
-        console.log('  - window.setBUStatus type:', typeof window.setBUStatus);
-        console.log('  - window.isBUStatusReady type:', typeof window.isBUStatusReady);
-        console.log('  - window.waitForBUStatus type:', typeof window.waitForBUStatus);
+            // Update the status text
+            this.statusDetail.textContent = text;
 
-        // Test immediate access
-        if (typeof setBUStatus !== 'undefined') {
-            console.log('✅ [Debug] setBUStatus is accessible in local scope');
-        } else {
-            console.error('❌ [Debug] setBUStatus is NOT accessible in local scope');
+            // Update the last updated time
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            this.statusUpdated.textContent = `Updated: ${timeString}`;
+
+            console.log(`📝 [Update] Status UI updated at ${timeString}`);
+            console.log(`🎨 [UI] Circle class: ${this.statusCircle.className}`);
+            console.log(`💬 [UI] Status text: ${text}`);
         }
 
-        if (typeof window.setBUStatus !== 'undefined') {
-            console.log('✅ [Debug] window.setBUStatus is accessible globally');
-        } else {
-            console.error('❌ [Debug] window.setBUStatus is NOT accessible globally');
+        // Manual status update method for when you know there's an incident
+        updateStatus(severity, message) {
+            console.log(`🔧 [Manual] Manual status update requested: ${severity} - ${message}`);
+            this.setStatus(severity, message);
         }
+    }
 
-        // Expose functions to parent window if in iframe
-        try {
-            if (window.parent && window.parent !== window) {
-                console.log('🔗 [Parent] Detected iframe context, exposing functions to parent window...');
+    // Initialize the status monitor when the page loads
+    let statusMonitor;
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('📄 [Init] DOM loaded, waiting 1 second before initializing status monitor...');
 
-                // Create a namespace in the parent window
-                if (!window.parent.BUStatus) {
-                    window.parent.BUStatus = {};
+        // Wait a bit to ensure other scripts are loaded
+        setTimeout(() => {
+            console.log('🏁 [Init] Initializing BU Status Monitor...');
+            statusMonitor = new BUStatusMonitor();
+
+            // Make it globally accessible for manual updates
+            window.buStatusMonitor = statusMonitor;
+            console.log('🌐 [Global] Status monitor available as window.buStatusMonitor');
+
+            // Example of how to manually update if needed:
+            console.log('💡 [Help] Manual update example: window.buStatusMonitor.updateStatus("major-outage", "Database outage in progress")');
+
+        }, 1000);
+    });
+
+    // Helper function for manual status updates from console
+    function setBUStatus(severity, message) {
+        console.log(`🎮 [Helper] setBUStatus called with: ${severity}, ${message}`);
+        if (window.buStatusMonitor) {
+            window.buStatusMonitor.updateStatus(severity, message);
+        } else {
+            console.error('❌ [Helper] Status monitor not yet initialized');
+            console.log('⏳ [Helper] Waiting for status monitor to initialize...');
+
+            // Wait for the status monitor to be ready
+            const checkReady = setInterval(() => {
+                if (window.buStatusMonitor) {
+                    console.log('✅ [Helper] Status monitor now ready, applying update');
+                    clearInterval(checkReady);
+                    window.buStatusMonitor.updateStatus(severity, message);
                 }
+            }, 100); // Check every 100ms
 
-                // Expose the functions to parent
-                window.parent.BUStatus.setBUStatus = setBUStatus;
-                window.parent.BUStatus.isBUStatusReady = isBUStatusReady;
-                window.parent.BUStatus.waitForBUStatus = waitForBUStatus;
-                window.parent.BUStatus.getMonitor = () => window.buStatusMonitor;
-
-                console.log('✅ [Parent] Functions exposed to parent window as:');
-                console.log('  - BUStatus.setBUStatus(severity, message)');
-                console.log('  - BUStatus.isBUStatusReady()');
-                console.log('  - BUStatus.waitForBUStatus()');
-                console.log('  - BUStatus.getMonitor()');
-            }
-        } catch (e) {
-            console.log('⚠️ [Parent] Could not expose to parent window (likely cross-origin restriction):', e.message);
+            // Give up after 10 seconds
+            setTimeout(() => {
+                clearInterval(checkReady);
+                console.error('❌ [Helper] Status monitor failed to initialize within 10 seconds');
+            }, 10000);
         }
-    </script>
+    }
 
-    <!--Freshdesk Status Widget Script-- >
-    <script type="module" src="https://cdn.freshstatus.io/widget/index.js"></script>
+    // Helper function to check if status monitor is ready
+    function isBUStatusReady() {
+        const isReady = !!(window.buStatusMonitor && typeof window.buStatusMonitor.updateStatus === 'function');
+        console.log(`🔍 [Ready Check] Status monitor ready: ${isReady}`);
+        return isReady;
+    }
+
+    // Helper function to wait for status monitor to be ready
+    function waitForBUStatus() {
+        return new Promise((resolve) => {
+            if (window.buStatusMonitor) {
+                console.log('✅ [Wait] Status monitor already ready');
+                resolve(window.buStatusMonitor);
+                return;
+            }
+
+            console.log('⏳ [Wait] Waiting for status monitor to initialize...');
+            const checkReady = setInterval(() => {
+                if (window.buStatusMonitor) {
+                    console.log('✅ [Wait] Status monitor is now ready');
+                    clearInterval(checkReady);
+                    resolve(window.buStatusMonitor);
+                }
+            }, 100);
+
+            // Timeout after 10 seconds
+            setTimeout(() => {
+                clearInterval(checkReady);
+                console.error('❌ [Wait] Timeout waiting for status monitor');
+                resolve(null);
+            }, 10000);
+        });
+    }
+
+    // Make helper functions globally accessible
+    window.setBUStatus = setBUStatus;
+    window.isBUStatusReady = isBUStatusReady;
+    window.waitForBUStatus = waitForBUStatus;
+
+    console.log('🌐 [Global] Helper functions available:');
+    console.log('  - setBUStatus(severity, message)');
+    console.log('  - isBUStatusReady()');
+    console.log('  - waitForBUStatus().then(monitor => ...)');
+
+    // Immediate verification that functions are accessible
+    console.log('🔍 [Debug] Verifying global function assignments:');
+    console.log('  - window.setBUStatus type:', typeof window.setBUStatus);
+    console.log('  - window.isBUStatusReady type:', typeof window.isBUStatusReady);
+    console.log('  - window.waitForBUStatus type:', typeof window.waitForBUStatus);
+
+    // Test immediate access
+    if (typeof setBUStatus !== 'undefined') {
+        console.log('✅ [Debug] setBUStatus is accessible in local scope');
+    } else {
+        console.error('❌ [Debug] setBUStatus is NOT accessible in local scope');
+    }
+
+    if (typeof window.setBUStatus !== 'undefined') {
+        console.log('✅ [Debug] window.setBUStatus is accessible globally');
+    } else {
+        console.error('❌ [Debug] window.setBUStatus is NOT accessible globally');
+    }
+
+    // Expose functions to parent window if in iframe
+    try {
+        if (window.parent && window.parent !== window) {
+            console.log('🔗 [Parent] Detected iframe context, exposing functions to parent window...');
+
+            // Create a namespace in the parent window
+            if (!window.parent.BUStatus) {
+                window.parent.BUStatus = {};
+            }
+
+            // Expose the functions to parent
+            window.parent.BUStatus.setBUStatus = setBUStatus;
+            window.parent.BUStatus.isBUStatusReady = isBUStatusReady;
+            window.parent.BUStatus.waitForBUStatus = waitForBUStatus;
+            window.parent.BUStatus.getMonitor = () => window.buStatusMonitor;
+
+            console.log('✅ [Parent] Functions exposed to parent window as:');
+            console.log('  - BUStatus.setBUStatus(severity, message)');
+            console.log('  - BUStatus.isBUStatusReady()');
+            console.log('  - BUStatus.waitForBUStatus()');
+            console.log('  - BUStatus.getMonitor()');
+        }
+    } catch (e) {
+        console.log('⚠️ [Parent] Could not expose to parent window (likely cross-origin restriction):', e.message);
+    }
+</script>
+
+<!-- Freshdesk Status Widget Script -->
+<script type="module" src="https://cdn.freshstatus.io/widget/index.js"></script>
 
 </body>
 
