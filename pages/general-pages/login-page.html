@@ -1,0 +1,131 @@
+<style>
+    a#forgetPassLink {
+        color: #12344d;
+        margin-bottom: 5px;
+    }
+
+    p.fs-20.semi-bold.mt-16.text-center,
+    a.fw-twitter-btn.py-12.rounded,
+    .footer-content,
+    /* Footer text white */
+    .footer-content a,
+    /* Footer links white */
+    .footer-content .contact-info,
+    .footer-content .contact-details,
+    .footer-content .contact-text {
+        color: white !important;
+    }
+
+    /* Set base color for all text to #12344d */
+    body,
+    .container,
+    .fw-loginform-wrapper,
+    .fw-form-section,
+    .form,
+    .fw-forget-section,
+    .footer-content,
+    a {
+        color: #12344d;
+    }
+
+
+    /* Specific override for the "Sign up with us" link */
+    a[href="/support/signup"] {
+        color: #12344d !important;
+        /* Ensure the color is forced */
+    }
+
+    .portal--light {
+        --fw-body-bg: transparent;
+    }
+
+    body {
+        background-image: url('https://res.cloudinary.com/doznvxtja/image/upload/v1721349354/1_eomebx.svg');
+        background-size: cover;
+        background-position: center center;
+    }
+
+    /* Center the widget */
+    .center-widget {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .fw-loginform-wrapper .fw-form-section .form .h1,
+    .fw-loginform-wrapper .fw-form-section .form h1 {
+        margin-bottom: .5rem;
+        font-size: 2rem;
+        display: none;
+    }
+</style>
+
+<section class="container">
+    <!-- Centered Title with Enhanced SVG and Text Below -->
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2
+                style="color: white; margin-top: 50px; margin-bottom: 0px; font-size: 28px; font-weight: bold; font-family: 'KGTenThousandReasons', sans-serif; line-height: 1;">
+                <!-- Image hidden by setting display to none -->
+                <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1725420765/Untitled_design_30_nwym6i.svg"
+                    alt="Benchmark Universe" style="display: none; margin: 0 auto; margin-bottom: -20px; width: 400px;">
+
+                Technical Support Portal Login
+            </h2>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="row fw-loginform-wrapper justify-content-center align-items-center" id="loginForm">
+    <div class="col-lg-6 fw-form-section">
+        {{ page_message }}
+        {% snippet login_error_messages %}
+        <div class="form">
+            {% snippet login_form %}
+            {% if portal.has_alternate_login %}
+            <div class="fw-or">
+                <div><span>{{ 'portal_translations.login.login_options' | t }}</span></div>
+                <hr />
+            </div>
+            <div class="fw-social-media-login row">
+                <div class="col-md-8 mx-auto">
+                    {% snippet social_login %}
+                </div>
+            </div>
+            {% endif %}
+            <div class="text-center fw-forget-section">
+                <a href="#" id="forgetPassLink">{{ 'portal_translations.login.forgot' | t }}</a>
+            </div>
+            <!-- Widget placed right below agent login section -->
+            <div class="center-widget">
+                <a href="https://benchmarkeducation.freshstatus.io" id="freshstatus-badge-root"
+                    data-banner-style="compact">
+                    <img
+                        src="https://public-api.freshstatus.io/v1/public/badge.svg/?badge=12d6fa47-c8f2-4305-b002-9314f34695f8" />
+                </a>
+            </div>
+        </div>
+        {% snippet agent_login %}
+        {% snippet customer_login %}
+    </div>
+</div>
+<div class="row fw-loginform-wrapper justify-content-center d-none" id="forgetPassForm">
+    <div class="col-lg-6 fw-form-section">
+        <div class="form">
+            {% snippet forgot_password_form %}
+            {% if portal.has_alternate_login %}
+            <div class="fw-or">
+                <div><span>{{ 'portal_translations.login.login_options' | t }}</span></div>
+                <hr />
+            </div>
+            <div class="fw-social-media-login row">
+                <div class="col-md-8 mx-auto">
+                    {% snippet social_login %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

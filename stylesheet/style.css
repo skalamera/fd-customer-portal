@@ -1,0 +1,908 @@
+@font-face {
+    font-family: 'KGTenThousandReasons';
+    src: url('https://res.cloudinary.com/doznvxtja/raw/upload/v1721662423/KGTenThousandReasons_m6v9is.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.font-custom {
+    font-family: 'KGTenThousandReasons', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+
+
+h1.fw-page-title {
+    font-size: 1.5em;
+    font-family: 'KGTenThousandReasons', sans-serif;
+    margin-bottom: 0.4rem;
+    color: white;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: #264966;
+}
+
+a.ms-36.my-16.d-block {
+    color: #12344d;
+    font-weight: bold;
+}
+
+div.col-12fw-section-heading.align-items-center {
+    font-weight: bold;
+}
+
+
+
+.py-8 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.push-footer-down {
+    height: 100vh;
+    background-color: transparent;
+}
+
+.fw-page-title-wrapper {
+    background-color: transparent;
+}
+
+section.container-fluid.px-0.py-24 {
+    background-color: transparent;
+}
+
+a.page-link {
+    color: blue;
+}
+
+.fw-category-wrapper .fw-articles li a:hover {
+    background-color: #11344d6b;
+    border-radius: .25rem;
+    box-sizing: border-box;
+}
+
+/* -----------------------Portal Home Page BEGINNING ------------------------ */
+.holiday-notice-banner {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.holiday-notice-icon {
+    width: 32px;
+    height: 32px;
+    margin: 0 10px;
+}
+
+.holiday-notice-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    color: #fff;
+    text-decoration: underline;
+}
+
+.fw-helpcenter {
+    background-color: transparent;
+}
+
+.holiday-notice-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 500px;
+    max-width: 90%;
+    background-color: #264966;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    border: 1px solid #d3d3d3;
+    /* Light gray border */
+    display: none;
+    /* Initially hidden */
+}
+
+.holiday-notice-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.holiday-notice-message-box {
+    background-color: #fff;
+    color: #264966;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: left;
+    width: 100%;
+}
+
+.holiday-notice-content p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.holiday-notice-message-box {
+    background-color: #fff;
+    color: #264966;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: left;
+    width: 100%;
+}
+
+.holiday-notice-content p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.holiday-notice-btn {
+    background-color: #009348;
+    color: #fff;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+
+}
+
+.holiday-notice-btn:hover {
+    background-color: #007b38;
+}
+
+@media (max-width: 480px) {
+    .holiday-notice-container {
+        width: 90%;
+        bottom: 10px;
+        left: 5%;
+    }
+}
+
+.fw-helpcenter {
+    background-color: transparent;
+}
+
+body {
+    background-size: cover;
+    background-image: url('https://res.cloudinary.com/doznvxtja/image/upload/v1721349354/1_eomebx.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: "Lato", sans-serif;
+    line-height: 1.5;
+    color: #111;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    background-color: #1a1a1a;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.col-md-8.text-center.text-lg-start {
+    font-size: 1.5em;
+}
+
+.section-background {
+    background-color: rgba(38, 73, 102, 0.65);
+    padding: 15px;
+    border-radius: 12px;
+}
+
+p.fs-18.semi-bold.line-clamp-2,
+h4,
+p.line-clamp-2.fw-meta-info {
+    color: white;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.card img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-title i {
+    margin-right: 8px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.btn-success {
+    background-color: #264966;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.btn-success:hover {
+    background-color: #11344d6b;
+    color: #12344d;
+}
+
+
+
+.text-4xl {
+    font-size: 2.25rem;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.my-8 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.mt-10 {
+    margin-top: 2.5rem;
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+    background-color: #009348;
+    color: #fff;
+    /* Ensure text remains readable */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    /* Optional: rounded corners */
+    transition: background-color 0.3s ease;
+    /* Smooth transition */
+}
+
+.btn-primary:hover {
+    background-color: #a1acb4;
+    color: #12344d;
+    /* background-color: rgba(0, 163, 90, 0.72);  Lighter semi-transparent green */
+}
+
+
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-md-5 {
+    flex: 0 0 auto;
+    width: 41.66667%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+h2.text-xl.font-semibold.mb-2 {
+    margin-top: 5px;
+}
+
+.knowledge-base-header {
+    display: flex;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+.font-custom.text-center {
+    margin-top: 5px;
+}
+
+.kb-title {
+    color: white;
+    margin: 0;
+    font-size: 2.25rem;
+    font-weight: 600;
+}
+
+.kb-link {
+    text-decoration: none;
+}
+
+.kb-link:hover .kb-title {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.card.h-100 {
+    margin-bottom: 20px;
+}
+
+.col-md-8 {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.my-8 {
+    margin-bottom: 40px !important;
+}
+
+.card img.card-icon {
+    width: 64px;
+    height: 64px;
+    margin-right: 15px;
+    display: inline-block;
+}
+
+.fw-helpcenter {
+    position: relative;
+    /* Ensure this container has a position context */
+}
+
+
+.whats-new-header {
+    /*  display: flex;*/
+    display: none;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    /* Adjust the top position */
+    left: 25px;
+    /* Adjust the right position */
+    background-color: transparent;
+    /* Make background transparent */
+    padding: 10px;
+    /* Adjust padding */
+    border-radius: 0 0 8px 0;
+    transform: translate(0, 0);
+    /* Adjust position using transform if needed */
+    transition: opacity 0.3s ease;
+    /* Smooth transition for hover effect */
+}
+
+.whats-new-header img {
+    width: 191px;
+    /* Adjust width */
+    height: 85px;
+    /* Adjust height */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    /* Transition effect for hover */
+}
+
+.whats-new-header:hover img {
+    transform: scale(1.05);
+    /* Slightly enlarge the SVG on hover */
+    opacity: 0.8;
+    /* Change opacity on hover */
+}
+
+.whats-new-header:hover {
+    cursor: pointer;
+    /* Change cursor to pointer */
+    background-color: transparent;
+    /* Ensure background remains transparent on hover */
+}
+
+/* Hide on screens 1200px wide and smaller */
+@media (max-width: 1200px) {
+    .whats-new-header {
+        display: none;
+    }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.centered-card {
+    grid-column: span 2;
+    justify-self: center;
+}
+
+@media (max-width: 1020px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .centered-card {
+        grid-column: span 2;
+        justify-self: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .centered-card {
+        grid-column: span 1;
+    }
+}
+
+h3 {
+    text-align: center;
+}
+
+/* New CSS for equal height cards */
+.equal-height-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 20px;
+}
+
+.equal-height-grid>a,
+.equal-height-grid>div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+}
+
+.equal-height-grid .card.heavy-shadow {
+    display: flex;
+    align-items: center;
+    /* Center items vertically */
+    justify-content: center;
+    /* Center items horizontally */
+    height: 100%;
+    min-height: 160px;
+    text-align: center;
+    /* Center text horizontally */
+}
+
+/* Make sure the content inside the card is also centered */
+.card>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center content horizontally */
+    justify-content: center;
+    /* Center content vertically */
+    text-align: center;
+    /* Center text */
+    width: 100%;
+}
+
+/* Special handling for cards with flexbox layout */
+.flex.items-center.card {
+    justify-content: center !important;
+    /* Force center horizontally */
+}
+
+/* Ensure icons are centered and maintain spacing */
+.card img {
+    margin: 0 auto 15px auto;
+    /* Center horizontally with bottom margin */
+}
+
+/* Special case for the status card */
+.equal-height-grid a[href*="freshstatus"] .widget {
+    margin: 10px auto 0 auto;
+    /* Center the status badge */
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .equal-height-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Adjust the Freshstatus badge size */
+#freshstatus-badge-root img {
+    width: 100% !important;
+    /* Override the inline 150% width */
+    height: auto !important;
+    /* Maintain aspect ratio */
+    max-width: 200px;
+    /* Limit maximum width */
+    margin: 0 auto;
+    /* Center the badge */
+}
+
+/* Additional styling to ensure the badge container is properly centered */
+#freshstatus-badge-root {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Ensure the card content is centered and properly spaced */
+.equal-height-grid a[href*="freshstatus"] .text-center {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Update grid layout for Quick Links section */
+.equal-height-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 20px;
+}
+
+/* Media queries for responsive layout */
+@media (max-width: 991px) {
+    .equal-height-grid[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .equal-height-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .equal-height-grid[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* -----------------------Portal Home Page END ------------------------ */
+
+/* 3-column grid for top cards */
+.equal-height-grid-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 20px;
+}
+
+.equal-height-grid-3col>a,
+.equal-height-grid-3col>div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.equal-height-grid-3col .card.heavy-shadow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 160px;
+    text-align: center;
+}
+
+/* Responsive layout for 3-column grid */
+@media (max-width: 991px) {
+    .equal-height-grid-3col {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .equal-height-grid-3col {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Status Monitor Display Styles */
+.status-display {
+    margin: 10px 0;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+.status-circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+/* Status Circle Colors */
+.status-circle.operational {
+    background-color: #28a745;
+    /* Green */
+    box-shadow: 0 0 6px rgba(40, 167, 69, 0.5);
+}
+
+.status-circle.degraded {
+    background-color: #ffc107;
+    /* Yellow */
+    box-shadow: 0 0 6px rgba(255, 193, 7, 0.5);
+}
+
+.status-circle.partial-outage {
+    background-color: #fd7e14;
+    /* Orange */
+    box-shadow: 0 0 6px rgba(253, 126, 20, 0.5);
+}
+
+.status-circle.major-outage {
+    background-color: #dc3545;
+    /* Red */
+    box-shadow: 0 0 6px rgba(220, 53, 69, 0.5);
+}
+
+.status-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.status-updated {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Status Monitor Responsive adjustments */
+@media (max-width: 768px) {
+    .status-indicator {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .status-text {
+        font-size: 13px;
+    }
+
+    .status-updated {
+        font-size: 11px;
+    }
+}
+
+/* Status Monitor Section Styles */
+.status-monitor-section {
+    margin: 30px 0 40px 0;
+}
+
+.status-monitor-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.status-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.status-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.status-title {
+    color: #12344D;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.status-actions {
+    margin-top: 15px;
+}
+
+.status-link {
+    color: #12344D;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.status-link:hover {
+    color: #009348;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for status monitor */
+@media (max-width: 768px) {
+    .status-monitor-section {
+        margin: 20px 0 30px 0;
+    }
+
+    .status-monitor-card {
+        margin: 0 15px;
+        padding: 15px;
+    }
+
+    .status-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .status-title {
+        font-size: 1.1rem;
+    }
+
+    .status-link {
+        font-size: 13px;
+    }
+}
+
+/* Status Monitor Section Styles */
+.status-monitor-section {
+    margin: 20px 0 30px 0;
+}
+
+.status-monitor-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    padding: 12px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+}
+
+/* Enhanced status circle with glow */
+.status-monitor-line .status-circle {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+}
+
+.status-monitor-line .status-circle.operational {
+    background-color: #28a745;
+    box-shadow: 0 0 12px rgba(40, 167, 69, 0.6);
+}
+
+.status-monitor-line .status-circle.degraded {
+    background-color: #ffc107;
+    box-shadow: 0 0 12px rgba(255, 193, 7, 0.6);
+}
+
+.status-monitor-line .status-circle.partial-outage {
+    background-color: #fd7e14;
+    box-shadow: 0 0 12px rgba(253, 126, 20, 0.6);
+}
+
+.status-monitor-line .status-circle.major-outage {
+    background-color: #dc3545;
+    box-shadow: 0 0 12px rgba(220, 53, 69, 0.6);
+}
+
+.status-monitor-line .status-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #12344D;
+    white-space: nowrap;
+}
+
+.status-monitor-line .status-updated {
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+/* Pulse animation for status circle */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments for single line */
+@media (max-width: 768px) {
+    .status-monitor-section {
+        margin: 15px 0 25px 0;
+    }
+
+    .status-monitor-line {
+        margin: 0 15px;
+        padding: 10px 16px;
+        gap: 8px;
+    }
+
+    .status-monitor-line .status-text {
+        font-size: 14px;
+    }
+
+    .status-monitor-line .status-updated {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .status-monitor-line {
+        flex-direction: column;
+        gap: 4px;
+        text-align: center;
+    }
+
+    .status-monitor-line .status-text,
+    .status-monitor-line .status-updated {
+        white-space: normal;
+    }
+}

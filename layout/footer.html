@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer with Background Image and Freshdesk Widget</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'Quicksand';
+            src: url('https://fonts.gstatic.com/s/quicksand/v21/6xK3dSBYKcSV-LCoeQqN9zlUD5GSv0h.ttf') format('truetype');
+        }
+
+        footer.footer {
+            margin-top: 0;
+        }
+
+        .footer-container {
+            background-color: #12344d;
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            color: white;
+            font-family: "Quicksand", sans-serif;
+            margin-top: 10px;
+        }
+
+        .footer-social-link img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            transition: transform 0.3s;
+        }
+
+        .footer-social-link img:hover {
+            transform: scale(1.1);
+        }
+
+        .fa {
+            margin-right: 5px;
+        }
+
+        a {
+            color: white;
+        }
+
+        a:hover {
+            color: #009348;
+        }
+
+        .quicksand-footer {
+            font-family: "Quicksand", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            color: white;
+        }
+
+        .quicksand-footer h5,
+        .quicksand-footer p,
+        .quicksand-footer li,
+        .quicksand-footer a {
+            font-family: "Quicksand", sans-serif;
+            font-weight: 400;
+            color: white;
+        }
+
+        .footer-container__col--contact ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .material-icons {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .footer-container__col--social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-container__col--contact .contact-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 13px;
+            margin-top: 5px;
+        }
+
+        .footer-container__col--contact .contact-info a {
+            white-space: nowrap;
+            margin: 5px;
+        }
+
+        .footer-container__col--contact .contact-info span.time-info {
+            display: flex;
+            align-items: center;
+            margin: 5px;
+            white-space: normal;
+            /* Allow wrapping */
+        }
+
+        .footer-container__col--contact .contact-info a span.material-icons {
+            vertical-align: middle;
+        }
+
+        .bt-container-inner {
+            text-align: center;
+        }
+
+        .quicksand-footer p {
+            margin: 10px auto;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .footer-container__col--contact .contact-info {
+                flex-direction: column;
+            }
+
+            .footer-container__col--contact .contact-info a,
+            .footer-container__col--contact .contact-info span.time-info {
+                margin: 5px auto;
+            }
+
+            .footer-container__inner {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .footer-container__col--social-links {
+                margin-top: 15px;
+            }
+
+            .contact-info .separator {
+                display: none;
+            }
+
+            /* Reduce font size for mobile */
+            .quicksand-footer p,
+            .quicksand-footer li,
+            .quicksand-footer a {
+                font-size: 0.9em;
+                /* Adjust as needed */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <footer class="footer-container quicksand-footer">
+        <div class="flex justify-center mb-6">
+            <a href="https://www.benchmarkeducation.com" target="_blank">
+                <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1725393070/Untitled_design_22_rn6wor.svg"
+                    alt="Benchmark Education Logo" style="width: 350px; height: auto;">
+            </a>
+        </div>
+
+        <div class="footer-container__wrapper bt-container">
+            <div class="bt-container-inner footer-container__inner">
+                <div class="footer-container__col footer-container__col--copyright">
+                    <p>© <span id="year"></span> <a target="_blank" href="https://benchmarkeducation.com/"
+                            title="Benchmark Education">Benchmark Education Company, LLC. All rights reserved.</a></p>
+                </div>
+                <div class="footer-container__col footer-container__col--contact">
+                    <ul>
+                        <li class="contact-info">
+                            <a href="tel:1-855-245-9751"><span class="material-icons">phone</span> 1-855-245-9751</a>
+                            <span class="separator hidden sm:inline-block">|</span>
+                            <a href="mailto:techsupport@benchmarkeducation.com"><span
+                                    class="material-icons">email</span> techsupport@benchmarkeducation.com</a>
+                            <span class="separator hidden sm:inline-block">|</span>
+                            <span class="time-info"><span class="material-icons">access_time</span>
+                                Monday-Friday, 8:00 AM - 6:00 PM EST</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-container__col footer-container__col--social-links">
+                    <a href="http://www.facebook.com/BenchmarkEducation" target="_blank" class="footer-social-link"><img
+                            src="https://res.cloudinary.com/doznvxtja/image/upload/v1723020229/facebook_d8ejkf.svg"
+                            alt="Facebook"></a>
+                    <a href="http://twitter.com/BenchmarkEdu" target="_blank" class="footer-social-link"><img
+                            src="https://res.cloudinary.com/doznvxtja/image/upload/v1723020229/x_odkcos.svg"
+                            alt="Twitter"></a>
+                    <a href="http://www.linkedin.com/company/benchmark-education-company" target="_blank"
+                        class="footer-social-link"><img
+                            src="https://res.cloudinary.com/doznvxtja/image/upload/v1723020229/linkedin_st9jyx.svg"
+                            alt="LinkedIn"></a>
+                    <a href="http://www.pinterest.com/benchmarked/" target="_blank" class="footer-social-link"><img
+                            src="https://res.cloudinary.com/doznvxtja/image/upload/v1723020229/pinterest_hazver.svg"
+                            alt="Pinterest"></a>
+                    <a href="http://instagram.com/BENCHMARKEDUCATION" target="_blank" class="footer-social-link"><img
+                            src="https://res.cloudinary.com/doznvxtja/image/upload/v1723020229/instagram_r9atkh.svg"
+                            alt="Instagram"></a>
+                    <a href="https://www.youtube.com/user/BenchmarkEducationCo" target="_blank"
+                        class="footer-social-link"><img
+                            src="https://res.cloudinary.com/doznvxtja/image/upload/v1723020229/youtube_q6b6yn.svg"
+                            alt="YouTube"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set the current year in the footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Function to parse URL parameters
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                name: params.get('name') || '',
+                email: params.get('email') || '',
+                district: params.get('district') || '',
+                // Join multiple order numbers with a new line for the multi-line text field
+                salesOrder: params.get('order') ? params.get('order').split(',').join('\n') : ''
+            };
+        }
+
+        // Function to check if any parameters exist
+        function shouldOpenWidget() {
+            const queryParams = getQueryParams();
+            // Check if any of the fields (name, email, district, or salesOrder) are present
+            return queryParams.name || queryParams.email || queryParams.district || queryParams.salesOrder;
+        }
+
+        // Function to initialize FreshworksWidget and prefill the Subscription Inquiry form
+        function openAndPrefillForm() {
+            const queryParams = getQueryParams();
+
+            // Only open the widget if any of the parameters exist
+            if (shouldOpenWidget()) {
+                // Identify the customer (name and email)
+                FreshworksWidget('identify', 'ticketForm', {
+                    name: queryParams.name,  // Prefill only if present
+                    email: queryParams.email,  // Prefill only if present
+                }, {
+                    formId: 67000001644 // Form ID for "subscription_inquiry"
+                });
+
+                // Prefill custom fields and other form fields
+                FreshworksWidget('prefill', 'ticketForm', {
+                    subject: 'Subscription Inquiry',
+                    description: '',
+                    custom_fields: {
+                        cf_district: queryParams.district,  // Prefill only if present
+                        // Prefill the multi-line text field for sales order numbers
+                        cf_sales_order_number: queryParams.salesOrder  // Populate with multiple order numbers (each on a new line)
+                    }
+                }, {
+                    formId: 67000001644 // Form ID for "subscription_inquiry"
+                });
+
+                // Automatically open the ticket form for the customer
+                FreshworksWidget('open', 'ticketForm', {
+                    formId: 67000001644 // Form ID for "subscription_inquiry"
+                });
+            }
+        }
+
+        // Function to manually open the General Inquiry form if no parameters are provided
+        function openGeneralInquiryForm() {
+            FreshworksWidget('open', 'ticketForm', {
+                formId: 67000000099 // Form ID for "general_inquiry"
+            });
+        }
+
+        // Wait until FD Widget is loaded before running the function
+        window.addEventListener('load', function () {
+            // If any URL parameters exist, open and prefill the Subscription Inquiry form
+            openAndPrefillForm();
+        });
+
+        // Add a manual trigger for opening the General Inquiry form
+        document.getElementById('open-widget-button').addEventListener('click', function () {
+            openGeneralInquiryForm();
+        });
+
+    </script>
+
+    <script>
+        window.fwSettings = {
+            'widget_id': 67000002129
+        };
+        !function () {
+            if ("function" != typeof window.FreshworksWidget) {
+                var n = function () {
+                    n.q.push(arguments)
+                };
+                n.q = [], window.FreshworksWidget = n
+            }
+        }();
+    </script>
+    <script type='text/javascript' src='https://widget.freshworks.com/widgets/67000002129.js' async defer></script>
+
+</body>
+
+</html>

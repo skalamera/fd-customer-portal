@@ -1,0 +1,343 @@
+<!-- Google Material Icons stylesheet -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+<style>
+    .navbar-nav {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        /* Ensure no default list styling */
+    }
+
+    /* Home button styling */
+    .nav-link:hover {
+        background-color: #11344d6b;
+        /* Gray color for hover */
+        color: white;
+        border-radius: 5px;
+    }
+
+    @media (min-width: 1200px) {
+        .navbar .navbar-collapse .nav-item .nav-link {
+            line-height: 4.25rem;
+            padding-top: 0;
+            padding-bottom: 0;
+            color: white;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .navbar .navbar-collapse .nav-item {
+            margin-right: 0;
+        }
+    }
+
+    btn-success:hover {
+        background-color: #11344d6b;
+        color: black;
+    }
+
+    /* Align Submit a Ticket button correctly */
+    .nav-item.no-hover {
+        margin-right: 15px;
+        /* Adjust this value to create space between "Submit a Ticket" and other items */
+        padding: 0;
+        /* Ensure no extra padding is added */
+    }
+
+    /* Style for the spacer item */
+    .nav-item.spacer-item .spacer {
+        display: inline-block;
+        width: 15px;
+        /* Adjust this value to control the amount of space */
+        background-color: transparent;
+        /* Match the navbar background */
+    }
+
+    /* Ensure all nav items are aligned properly */
+    .navbar-nav .nav-item {
+        padding: 0;
+        /* Reset padding for each nav item */
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        padding: 8px 16px;
+        /* Ensure consistent padding for all nav links */
+        line-height: 1.5;
+        /* Ensure vertical alignment */
+    }
+
+    .nav-item.active .nav-link {
+        background-color: #12344D;
+        color: white;
+        border-radius: 25px;
+    }
+
+    /* Reset margins and padding for navbar and containers */
+    .fw-nav-wrapper,
+    .navbar {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+    }
+
+    .fw-nav-wrapper .container-fluid,
+    .fw-nav-wrapper .container {
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    .fw-nav-wrapper .navbar-brand,
+    .fw-nav-wrapper .navbar-nav,
+    .fw-nav-wrapper .nav-item,
+    .fw-nav-wrapper .nav-link {
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    #whatsNewSidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1050;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        overflow-x: hidden;
+        transition: 0.5s;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+        padding-top: 60px;
+    }
+
+    #whatsNewSidebar .closebtn {
+        position: absolute;
+        top: 20px;
+        left: 25px;
+        font-size: 36px;
+        cursor: pointer;
+    }
+
+    #whatsNewSidebar h2 {
+        padding: 10px 15px;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+
+    #whatsNewSidebar .sidebar-content {
+        padding: 15px;
+        color: #333;
+    }
+
+    #whatsNewSidebar .sidebar-content a {
+        color: blue;
+        text-decoration: none;
+    }
+
+    #whatsNewSidebar .sidebar-content a:hover {
+        text-decoration: underline;
+    }
+
+    .sidebar-content hr {
+        border: 0;
+        height: 2px;
+        background-color: #333;
+        margin: 20px 0;
+    }
+
+
+
+
+    /* Spacer nav-item hover color */
+    .nav-item.spacer-item .spacer:hover {
+        background-color: white;
+        /* Set the hover color to white */
+    }
+
+    /* SHOW/HIDE WHAT'S NEW ITEMS */
+
+    .hide-whats-new,
+    a[href="javascript:void(0);"][onclick="openWhatsNewSidebar()"] {
+        /*   display: none; */
+    }
+
+    /* Default button background */
+    #new-ticket-button {
+        background-color: #009348;
+        color: #fff;
+        /* Ensure text remains readable */
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        /* Optional: rounded corners */
+        transition: background-color 0.3s ease;
+        /* Smooth transition */
+    }
+
+    /* Hover state for the button */
+    #new-ticket-button:hover {
+        background-color: #11344d6b;
+        color: #12344d;
+        /* background-color: rgba(0, 163, 90, 0.72);  Lighter semi-transparent green */
+    }
+</style>
+
+
+<!-- Header Navbar -->
+<header class="container-fluid px-0 fw-nav-wrapper fixed-top">
+    <section class="bg-light container-fluid">
+        <div class="container">
+            {% element 'link' %}
+            {
+            "url": "#fw-main-content",
+            "class": "visually-hidden visually-hidden-focusable p-8 my-12 btn btn-outline-primary",
+            "content": "{{ 'portal_translations.header.skip_content' | t }}"
+            }
+            {% endelement %}
+        </div>
+    </section>
+
+    {% if portal.current_page != "csat_survey" %}
+    <section class="container">
+        <nav class="navbar navbar-expand-xl navbar-light px-0 py-4 pt-xl-2 pb-xl-0">
+            {% element 'header/logo' %}
+            {
+            "logo_url": "https://res.cloudinary.com/doznvxtja/image/upload/v1723071411/CREATE_180_x_40_px_1_vxg0ce.svg",
+            "name": "Technical Support Portal"
+            }
+            {% endelement %}
+            {% element 'hamburger' %}{}{% endelement %}
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mt-0">
+
+                    <!-- "What's New" Menu Option with Custom SVG Icon 
+<li class="nav-item hide-whats-new">
+    <a href="javascript:void(0)" class="nav-link" onclick="openWhatsNewSidebar()">
+        <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1741707873/Untitled_design_8_mjybvp.svg" alt="What's New" class="custom-info-icon">
+    </a>
+</li>
+
+<style>
+/* Custom SVG icon styling */
+.custom-info-icon {
+    width: 28px; /* Control the icon size */
+    height: auto;
+    vertical-align: middle;
+}
+
+/* Center the icon in the nav link */
+.nav-item.hide-whats-new .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 16px; /* Maintain consistent padding */
+}
+
+</style>
+-->
+                    <!-- Display when "What's New" Menu Option is Hidden & Hide When What's New" Menu Option is Visible -->
+                    <li class="nav-item spacer-item">
+                        <span class="spacer">&nbsp;</span>
+                    </li>
+
+
+                    <!-- "Knowledge Base" Menu Option -->
+                    {% for tab in portal.tabs %}
+                    {% if tab.label == 'Knowledge base' %}
+                    <li class="nav-item {% if tab.tab_type == portal.current_tab %}active{% endif %}">
+                        <a href="{{ tab.url }}" class="nav-link">
+                            <span class="d-md-none icon-{{tab.tab_type}}"></span>
+                            Knowledge Base
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+
+                    <!-- "My Tickets" Menu Option -->
+                    {% for tab in portal.tabs %}
+                    {% if tab.label == 'Tickets' %}
+                    <li class="nav-item {% if tab.tab_type == portal.current_tab %}active{% endif %}">
+                        <a href="{{ tab.url }}" class="nav-link">
+                            <span class="d-md-none icon-{{tab.tab_type}}"></span>
+                            My Tickets
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    <!-- New "Home" Menu Option -->
+                    <li class="nav-item home-item {% if portal.current_tab == 'home' %}active{% endif %}">
+                        <a href="/support/home" class="nav-link">
+                            Home
+                        </a>
+                    </li>
+                    <!-- Spacer Item -->
+                    <li class="nav-item spacer-item">
+                        <span class="spacer">&nbsp;</span>
+                    </li>
+                    <li class="nav-item no-hover">
+                        <a id="new-ticket-button" href="/support/tickets/new" class="btn fw-secondary-button">
+                            Submit a Ticket
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav flex-row align-items-center ps-8 fw-nav-dropdown-wrapper">
+                    {{ portal | header_user_navigation }}
+                    <li class="nav-item dropdown no-hover ms-auto">
+                        {{portal | header_language_list }}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <div class="nav-overlay d-none"></div>
+    {% else %}
+    <section class="container">
+        <nav class="navbar navbar-expand-xl navbar-light px-0 py-8 pt-xl-2 pb-xl-0">
+            {% element 'header/logo' %}
+            {
+            "logo_url": "https://res.cloudinary.com/doznvxtja/image/upload/v1723071411/CREATE_180_x_40_px_1_vxg0ce.svg",
+            "name": "{{ portal.name | escape_once }}"
+            }
+            {% endelement %}
+        </nav>
+    </section>
+    {% endif %}
+</header>
+
+
+
+<!-- Updated sidebar content with Benchmark Universe Technical Support header -->
+<div id="whatsNewSidebar">
+    <span class="material-icons-outlined closebtn" onclick="closeWhatsNewSidebar()"
+        style="font-size: 48px;">close</span>
+    <div class="sidebar-content">
+        <h1 style="font-size: 2.5em; text-align: center; color: #12344D; margin-bottom: 5px;">Benchmark Universe
+            Technical Support</h1>
+        <h2 style="font-size: 1.8em; text-align: center; color: #12344D; margin-top: 10px; margin-bottom: 15px;">Hours
+            of Availability</h2>
+        <hr style="border: 0; height: 1px; background-color: #ccc; margin: 15px 0;">
+        <div
+            style="margin-top: 30px; background-color: #12344D; color: white; padding: 25px; border-radius: 10px; text-align: center;">
+            <p style="font-size: 1.4em; margin-bottom: 15px;">Monday - Friday</p>
+            <p style="font-size: 1.6em; margin-bottom: 25px;">8:00 AM – 6:00 PM EST</p>
+            <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+                <span class="material-icons-outlined" style="margin-right: 10px; font-size: 24px;">phone</span>
+                <p style="font-size: 1.6em; margin: 0;">855.245.9751</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScript to toggle the sidebar -->
+<script>
+    function openWhatsNewSidebar() {
+        document.getElementById("whatsNewSidebar").style.width = "400px"; /* Set the width when opening */
+    }
+
+    function closeWhatsNewSidebar() {
+        document.getElementById("whatsNewSidebar").style.width = "0"; /* Hide the sidebar */
+    }
+</script>

@@ -1,0 +1,53 @@
+<style>
+
+body {
+      background-image: url('https://res.cloudinary.com/doznvxtja/image/upload/v1721349354/1_eomebx.svg');
+        background-size: cover;
+      background-position: center center;
+  }
+  
+    p.fs-20.semi-bold.mt-16.text-center, 
+  a.fw-twitter-btn.py-12.rounded,
+  .footer-content, /* Footer text white */
+  .footer-content a, /* Footer links white */
+  .footer-content .contact-info,
+  .footer-content .contact-details,
+  .footer-content .contact-text {
+    color: white !important;
+  }
+  
+  form#new_user.new_user a {
+  color: #12344d
+  }
+  
+    form#new_user.new_user h1 {
+display: none
+  }
+
+</style>
+<section class="container">
+  <!-- Centered Title with Enhanced SVG and Text Below -->
+  <div class="row">
+    <div class="col-12 text-center">
+      <h2 style="color: white; margin-top: 50px; margin-bottom: 0px; font-size: 28px; font-weight: bold; font-family: 'KGTenThousandReasons', sans-serif; line-height: 1;">
+        <!-- Image hidden by setting display to none -->
+        <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1725420765/Untitled_design_30_nwym6i.svg" alt="Benchmark Universe" 
+             style="display: none; margin: 0 auto; margin-bottom: -20px; width: 400px;">
+
+        Technical Support Portal Sign up
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="container">
+  <div class="row fw-loginform-wrapper justify-content-center align-items-center">
+    <div class="col-lg-6 fw-form-section">
+      {{ page_message }}
+      {% snippet signup_form %}
+      {% snippet agent_login %}
+    </div>
+  </div>
+</section>

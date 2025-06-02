@@ -1,0 +1,505 @@
+<!--
+<div id="holiday-notice" class="holiday-notice-container">
+    <div class="holiday-notice-banner">
+        <h2 class="holiday-notice-title">Tech Support Availability Update</h2>
+    </div>
+    <div class="holiday-notice-content" id="holiday-notice">
+        <div class="holiday-notice-message-box">
+            <p>Tech Support services will be unavailable beginning Friday, May 23 at 2:00 PM EST.
+Normal operations will resume on Tuesday, May 27.
+Thank you for your understanding, and we look forward to assisting you after the holiday.</p>
+        </div>
+        <div>
+            <label style="color: white; margin-bottom: 5px;">
+                <input type="checkbox" id="dont-show-again">
+                Don't show again
+            </label>
+        </div>
+        <button id="holiday-notice-ok" class="holiday-notice-btn">OK</button>
+    </div>
+</div>
+-->
+
+{% if portal.current_tab and portal.current_tab == "home" %}
+<section>
+    {{ page_message }}
+</section>
+<section class="container-fluid px-0 fw-helpcenter mb-md-n64">
+
+    <!-- What's New button with SVG only -->
+    <div class="whats-new-header" onclick="openWhatsNewSidebar()">
+        <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1725053727/Untitled_design_3_fq37zy.svg"
+            alt="What's New Icon">
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-lg-6 mx-auto">
+                <div class="font-custom text-center">
+                    Hi, how can we help you?
+                </div>
+                {{ portal | search_element: search_text }}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+<!-- BU Status Monitor Section -->
+<section class="container-fluid px-0 status-monitor-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="status-monitor-card">
+                    <div class="status-header">
+                        <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1724949603/2_qcvl5r.svg"
+                            alt="Benchmark Universe Status" class="status-icon">
+                        <h3 class="status-title">Benchmark Universe Status</h3>
+                    </div>
+
+                    <div class="status-display">
+                        <div class="status-indicator">
+                            <div id="statusCircle" class="status-circle operational"></div>
+                            <span id="statusDetail" class="status-text">Checking status...</span>
+                        </div>
+                        <div id="statusUpdated" class="status-updated">Initializing...</div>
+                    </div>
+
+                    <div class="status-actions">
+                        <a href="https://benchmarkeducation.freshstatus.io/" target="_blank" class="status-link">
+                            View Detailed Status →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BU Status Monitor Section -->
+<section class="container-fluid px-0 status-monitor-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <div class="status-monitor-line">
+                    <div id="statusCircle" class="status-circle operational"></div>
+                    <span id="statusDetail" class="status-text">Checking status...</span>
+                    <span id="statusUpdated" class="status-updated">Initializing...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Top Section with Cards -->
+<div class="container mx-auto my-8 section-background">
+    <div class="equal-height-grid-3col p-4">
+        <!-- Submit a Ticket -->
+        <a href="{{ portal.new_ticket_url }}"
+            class="bg-white p-6 rounded-lg hover:shadow-2xl transition flex flex-col items-center justify-center card heavy-shadow">
+            <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1724949604/3_qwqn3q.svg" alt="Submit a Ticket"
+                class="mx-auto mb-4">
+            <div class="text-center">
+                <h2 class="text-xl font-semibold mb-2">Submit a Ticket</h2>
+                <p>Click here to access the feedback widget and submit your request</p>
+            </div>
+        </a>
+
+        <!-- Manage My Tickets -->
+        <a href="/support/tickets#filter=my_tickets"
+            class="bg-white p-6 rounded-lg hover:shadow-2xl transition flex flex-col items-center justify-center card heavy-shadow">
+            <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1724969686/My-Tickets_icon-A_ru4tqd.svg"
+                alt="View My Tickets" class="mx-auto mb-4">
+            <div class="text-center">
+                <h2 class="text-xl font-semibold mb-2">Manage My Tickets</h2>
+                <p>View the status of each of your tickets and manage your interactions with Tech Support</p>
+            </div>
+        </a>
+
+        <!-- Office Hour (NEW CARD REPLACING BOOK A MEETING) -->
+        <a href="https://us02web.zoom.us/webinar/register/WN_yCygN2dzThucoa9GPEs9Lw" target="_blank"
+            class="bg-white p-6 rounded-lg hover:shadow-2xl transition flex flex-col items-center justify-center card heavy-shadow">
+            <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1742324742/12_j6pwvt.svg" alt="Office Hour"
+                class="mx-auto mb-4">
+            <div class="text-center">
+                <h2 class="text-xl font-semibold mb-2">Office Hour</h2>
+                <p>Join our virtual office hour and prepare for Year-End, Summer, & BTS 2025-26</p>
+                <!-- Register button -->
+                <div class="mt-4">
+                    <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1742325270/13_etcouj.svg"
+                        alt="Register" style="width: 150px; height: auto; cursor: pointer;">
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+<!-- Knowledge Base Section -->
+<div class="container mx-auto my-8 section-background" style="margin-top: 30px;">
+    <!-- Header Section -->
+    <div class="row">
+        <div class="col-12 text-center mb-30">
+            <a href="/support/solutions" class="kb-link">
+                <h2 class="kb-title" style="margin-bottom: 20px;">
+                    Knowledge Base
+                </h2>
+            </a>
+        </div>
+    </div>
+
+    <!-- Role-focused Help Articles -->
+    <div class="col-12 text-center my-6">
+        <h3 style="color: white;">Role-focused Help Articles</h3>
+    </div>
+
+    <!-- Educators and Rostering Contacts -->
+    <div class="equal-height-grid p-4">
+        <!-- Educators -->
+        <div
+            class="bg-white p-6 rounded-lg hover:shadow-2xl transition flex flex-col items-center justify-center card heavy-shadow">
+            <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1724949601/6_kdsw6d.svg" alt="Educators"
+                class="mx-auto mb-4">
+            <div class="text-center">
+                <h2 class="text-xl font-semibold mb-2">Educators</h2>
+                <p>Resources for Educators: Learn how to effectively use Benchmark Universe to manage assignments,
+                    create lesson plans, and maximize student engagement.</p>
+                <a href="/support/solutions/folders/67000581083" class="btn btn-success mt-4">View Articles</a>
+            </div>
+        </div>
+
+        <!-- Rostering Contacts -->
+        <div
+            class="bg-white p-6 rounded-lg hover:shadow-2xl transition flex flex-col items-center justify-center card heavy-shadow">
+            <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1724969177/Rostering-Contacts_icon_rp0rek.svg"
+                alt="Rostering Contacts" class="mx-auto mb-4">
+            <div class="text-center">
+                <h2 class="text-xl font-semibold mb-2">Rostering Contacts</h2>
+                <p>Guidance for Tech Admins: Manage user data, onboard staff and students, and troubleshoot access
+                    issues in Benchmark Universe.</p>
+                <a href="/support/solutions/folders/67000581084" class="btn btn-success mt-4">View Articles</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- General, Tips & Best Practices -->
+    <div class="col-12 text-center my-6">
+        <h3 style="color: white;">General Help Articles, FAQ'S, Tips & Best Practices</h3>
+    </div>
+    <div class="flex justify-center p-4">
+        <!-- General -->
+        <div
+            class="bg-white p-6 rounded-lg hover:shadow-2xl transition flex flex-col items-center justify-center card heavy-shadow">
+            <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1724949601/7_qaps8s.svg" alt="General"
+                class="mx-auto mb-4">
+            <div class="text-center">
+                <h2 class="text-xl font-semibold mb-2">General</h2>
+                <p>Find general information and guidelines to help you navigate Benchmark Universe and maximize your
+                    experience.</p>
+                <a href="/support/solutions/folders/67000580985" class="btn btn-success mt-4">View Articles</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- View All Folders & Articles Button -->
+    <div class="text-center mb-6" style="margin-top: 40px;">
+        <a href="/support/solutions" class="btn btn-primary">View All Folders & Articles</a>
+    </div>
+</div>
+
+<!-- Quick Links Section -->
+<div class="container mx-auto my-8 section-background" style="margin-top: 30px;">
+    <!-- Header Section -->
+    <div class="row">
+        <div class="col-12 text-center mb-30">
+            <h2 class="kb-title" style="margin-bottom: 20px; color: white; font-size: 32px; font-weight: bold;">
+                Quick Links
+            </h2>
+        </div>
+    </div>
+
+    <!-- Quick Links Cards - Modified to be in one horizontal row -->
+    <div class="equal-height-grid p-4 justify-center" style="grid-template-columns: repeat(3, 1fr);">
+        <!-- Video Tutorials -->
+        <div
+            class="bg-white p-6 rounded-lg hover:shadow-2xl transition flex flex-col items-center justify-center card heavy-shadow position-relative">
+            <!-- SVG placed at top right - resized and repositioned -->
+            <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1724635527/logos_3_ybof4a.svg" alt="Logo"
+                class="absolute" style="width: 3em; height: 3rem; top: 10px; right: 10px;">
+            <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1724968250/5_hbfffx.svg" alt="Video Tutorials"
+                class="mx-auto mb-4">
+            <div class="text-center">
+                <h2 class="text-xl font-semibold mb-2">Video Tutorials</h2>
+                <p>Watch tutorials to get the most out of our products and services</p>
+            </div>
+        </div>
+
+        <!-- Benchmark Universe Help Center -->
+        <a href="https://help.benchmarkuniverse.com/bubateacher/Content/A_Introduction%20Topics/Welcome.htm"
+            target="_blank"
+            class="bg-white p-6 rounded-lg hover:shadow-2xl transition flex flex-col items-center justify-center card heavy-shadow">
+            <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1724949601/5_cn2obv.svg"
+                alt="Benchmark Universe Help Center" class="mx-auto mb-4">
+            <div class="text-center">
+                <h2 class="text-xl font-semibold mb-2">Benchmark Universe Help Center</h2>
+                <p>Explore How-To's and learn best practices from our knowledge base</p>
+            </div>
+        </a>
+
+        <!-- Book a Meeting (MOVED FROM TOP SECTION) -->
+        <a href="https://outlook.office365.com/owa/calendar/TechnicalSuccess1@benchmarkeducation.com/bookings/"
+            target="_blank"
+            class="bg-white p-6 rounded-lg hover:shadow-2xl transition flex flex-col items-center justify-center card heavy-shadow">
+            <img src="https://res.cloudinary.com/doznvxtja/image/upload/v1724949602/10_rnk3up.svg" alt="Book a Meeting"
+                class="mx-auto mb-4">
+            <div class="text-center">
+                <h2 class="text-xl font-semibold mb-2">Book a Meeting</h2>
+                <p>Book a 1:1 meeting with a Tech Support Specialist for rostering support</p>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+<!-- Sidebar for "What's New" -->
+<div id="whatsNewSidebar">
+    <span class="material-icons-outlined closebtn" onclick="closeWhatsNewSidebar()"
+        style="font-size: 48px;">close</span>
+    <div class="sidebar-content">
+        <h1 style="font-size: 2.5em; text-align: center; color: #12344D; margin-bottom: 5px;">Benchmark Universe
+            Technical Support</h1>
+        <h2 style="font-size: 1.8em; text-align: center; color: #12344D; margin-top: 10px; margin-bottom: 15px;">Hours
+            of Availability</h2>
+        <hr style="border: 0; height: 1px; background-color: #ccc; margin: 15px 0;">
+        <div
+            style="margin-top: 30px; background-color: #12344D; color: white; padding: 25px; border-radius: 10px; text-align: center;">
+            <p style="font-size: 1.4em; margin-bottom: 15px;">Monday - Friday</p>
+            <p style="font-size: 1.6em; margin-bottom: 25px;">8:00 AM – 6:00 PM EST</p>
+            <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+                <span class="material-icons-outlined" style="margin-right: 10px; font-size: 24px;">phone</span>
+                <p style="font-size: 1.6em; margin: 0;">855.245.9751</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for Sidebar -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleButton = document.getElementById('whats-new-toggle');
+        const content = document.getElementById('whats-new-content');
+
+        toggleButton.addEventListener('click', function () {
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        });
+    });
+</script>
+
+<!-- JavaScript: Modal Functionality -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Show the notice only if not previously dismissed
+        const holidayNotice = document.getElementById('holiday-notice');
+        const noticeDismissed = localStorage.getItem('holidayNoticeDismissed');
+
+        if (!noticeDismissed) {
+            holidayNotice.style.display = 'block';
+        }
+
+        // Handle the "OK" button click
+        document.getElementById('holiday-notice-ok').addEventListener('click', function () {
+            const dontShowAgain = document.getElementById('dont-show-again').checked;
+
+            // Dismiss the notice for the session
+            holidayNotice.style.display = 'none';
+
+            // If "Don't show again" is checked, save to local storage
+            if (dontShowAgain) {
+                localStorage.setItem('holidayNoticeDismissed', 'true');
+            }
+        });
+    });
+</script>
+
+<!-- JavaScript to toggle the sidebar -->
+<script>
+    function openWhatsNewSidebar() {
+        document.getElementById("whatsNewSidebar").style.width = "400px"; /* Set the width when opening */
+    }
+
+    function closeWhatsNewSidebar() {
+        document.getElementById("whatsNewSidebar").style.width = "0"; /* Hide the sidebar */
+    }
+</script>
+
+<!-- Embed Freshstatus Widget Script -->
+<script type="module" src="https://cdn.freshstatus.io/widget/index.js"></script>
+
+<!-- BU Status Monitor JavaScript -->
+<script>
+    // BU Status Monitor - Integrated Version for Portal Home
+    class BUStatusMonitor {
+        constructor() {
+            this.subdomain = 'benchmarkeducation';
+            this.updateInterval = 3 * 60 * 1000; // 3 minutes
+            this.statusCircle = document.getElementById('statusCircle');
+            this.statusDetail = document.getElementById('statusDetail');
+            this.statusUpdated = document.getElementById('statusUpdated');
+
+            console.log('🔄 BU Status Monitor initialized for Portal Home');
+            console.log(`📡 Will check status every ${this.updateInterval / 1000 / 60} minutes`);
+            this.init();
+        }
+
+        init() {
+            console.log('🚀 Starting initial status check');
+            this.checkStatus();
+
+            console.log('⏰ Setting up periodic status checks');
+            setInterval(() => {
+                console.log('🔔 Periodic status check triggered');
+                this.checkStatus();
+            }, this.updateInterval);
+        }
+
+        async checkStatus() {
+            const startTime = Date.now();
+            console.log('📊 [Status Check] Starting status check at', new Date().toLocaleTimeString());
+
+            try {
+                console.log('🌐 [Connectivity] Testing connectivity to status page...');
+
+                // Test connectivity to the status page
+                const isAccessible = await this.testConnectivity();
+
+                const duration = Date.now() - startTime;
+                console.log(`⏱️ [Connectivity] Test completed in ${duration}ms, result: ${isAccessible ? 'SUCCESS' : 'FAILED'}`);
+
+                if (isAccessible) {
+                    console.log('✅ [Status] Status page accessible - setting to operational');
+                    this.setStatus('operational', 'All systems operational');
+                } else {
+                    console.log('⚠️ [Status] Status page not accessible - setting to degraded');
+                    this.setStatus('degraded', 'Service connectivity issues');
+                }
+            } catch (error) {
+                console.warn('❌ [Error] Status check failed:', error);
+                console.log('🔄 [Fallback] Defaulting to operational status');
+                this.setStatus('operational', 'All systems operational');
+            }
+
+            const totalDuration = Date.now() - startTime;
+            console.log(`✅ [Complete] Status check completed in ${totalDuration}ms`);
+        }
+
+        async testConnectivity() {
+            console.log('🔍 [Test] Creating connectivity test...');
+
+            return new Promise((resolve) => {
+                const img = new Image();
+                const testStartTime = Date.now();
+
+                const timeout = setTimeout(() => {
+                    console.log('⏰ [Test] Connectivity test timed out after 5 seconds - assuming operational');
+                    resolve(true);
+                }, 5000);
+
+                img.onload = () => {
+                    const loadTime = Date.now() - testStartTime;
+                    console.log(`✅ [Test] Favicon loaded successfully in ${loadTime}ms`);
+                    clearTimeout(timeout);
+                    resolve(true);
+                };
+
+                img.onerror = () => {
+                    const errorTime = Date.now() - testStartTime;
+                    console.log(`⚠️ [Test] Favicon failed to load after ${errorTime}ms - assuming operational anyway`);
+                    clearTimeout(timeout);
+                    resolve(true);
+                };
+
+                const testUrl = `https://${this.subdomain}.freshstatus.io/favicon.ico?t=${Date.now()}`;
+                console.log(`🌍 [Test] Testing URL: ${testUrl}`);
+
+                img.src = testUrl;
+            });
+        }
+
+        setStatus(severity, text) {
+            console.log(`🎯 [Update] Setting status: ${severity.toUpperCase()} - "${text}"`);
+
+            // Only update if elements exist
+            if (this.statusCircle) {
+                this.statusCircle.className = `status-circle ${severity}`;
+            }
+
+            if (this.statusDetail) {
+                this.statusDetail.textContent = text;
+            }
+
+            if (this.statusUpdated) {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString();
+                this.statusUpdated.textContent = `Updated: ${timeString}`;
+            }
+
+            console.log(`📝 [Update] Status UI updated at ${new Date().toLocaleTimeString()}`);
+        }
+
+        // Manual status update method
+        updateStatus(severity, message) {
+            console.log(`🔧 [Manual] Manual status update requested: ${severity} - ${message}`);
+            this.setStatus(severity, message);
+        }
+    }
+
+    // Helper functions for manual status updates
+    function setBUStatus(severity, message) {
+        console.log(`🎮 [Helper] setBUStatus called with: ${severity}, ${message}`);
+        if (window.buStatusMonitor) {
+            window.buStatusMonitor.updateStatus(severity, message);
+        } else {
+            console.error('❌ [Helper] Status monitor not yet initialized');
+        }
+    }
+
+    function isBUStatusReady() {
+        const isReady = !!(window.buStatusMonitor && typeof window.buStatusMonitor.updateStatus === 'function');
+        console.log(`🔍 [Ready Check] Status monitor ready: ${isReady}`);
+        return isReady;
+    }
+
+    // Initialize the status monitor when DOM is ready
+    let statusMonitor;
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('📄 [Init] DOM loaded, initializing BU Status Monitor for Portal Home...');
+
+        // Wait a bit to ensure all elements are ready
+        setTimeout(() => {
+            console.log('🏁 [Init] Starting BU Status Monitor...');
+
+            // Check if required elements exist
+            if (document.getElementById('statusCircle') &&
+                document.getElementById('statusDetail') &&
+                document.getElementById('statusUpdated')) {
+
+                statusMonitor = new BUStatusMonitor();
+                window.buStatusMonitor = statusMonitor;
+                window.setBUStatus = setBUStatus;
+                window.isBUStatusReady = isBUStatusReady;
+
+                console.log('🌐 [Global] Status monitor available as window.buStatusMonitor');
+                console.log('💡 [Help] Manual update: setBUStatus("major-outage", "Database maintenance")');
+            } else {
+                console.warn('⚠️ [Init] Status display elements not found, skipping status monitor initialization');
+            }
+        }, 1000);
+    });
+</script>
